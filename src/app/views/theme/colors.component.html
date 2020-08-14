@@ -1,0 +1,69 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+
+    <script>
+        "use restrict";
+        
+        var x,y;
+        var z=0,t=0;
+        console.log("bonjour");
+        fetch('/Users/yahiaaityaich/Desktop/stage-idemia/Test-Automation-Report.html')
+        .then(function(resp){
+            return resp.text();
+        })
+        .then(function(data){
+            let parser = new DOMParser(),
+                doc = parser.parseFromString(data, 'text/html');
+                for (let index = 0; index < doc.getElementsByClassName('test-status').length; index++) {
+                    if(doc.getElementsByClassName('test-status')[index].textContent==="pass"){
+                         y+=doc.getElementsByClassName('test-name')[index].textContent+"<br>";
+                         z++;
+                    }else{
+                        x+=doc.getElementsByClassName('test-name')[index].textContent +"<br>";
+                        t++;
+                    }
+                }
+       
+        
+                document.getElementById("test1").innerHTML+="le nombre de test total "+doc.getElementsByClassName('test-status').length+"<br>"; 
+                document.getElementById("test2").innerHTML+="le nombre de test positif "+z+"<br>";
+                document.getElementById("test10").innerHTML+=y+"<br>";
+                document.getElementById("test3").innerHTML+="le nombre de test fail "+t+"<br>";
+                document.getElementById("test20").innerHTML+=x+"<br>";
+        });
+        </script>
+
+</head>
+
+<div class="animated fadeIn">
+  <div class="card">
+    
+    <body>
+      <h1 id="test1">
+      </h1>
+      <hr>
+      <h2 id="test2">
+      </h2>
+      <div id="test10"></div>
+      <hr>
+      <h2 id="test3">
+      </h2>
+      <div id="test20" ></div>
+      
+  
+  
+      
+  </body>
+    
+  </div>
+</div>
+
+</html>
+
