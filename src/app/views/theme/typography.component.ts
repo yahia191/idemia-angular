@@ -10,6 +10,7 @@ export class TypographyComponent implements OnInit {
   eulaContent = '';
 x='';y='';
 z=0;t=0;
+
   constructor(private sanitizer: DomSanitizer) { }
   ngOnInit(): void {
     fetch('/assets/Cucumber.html').then(res => res.text()).then(data => {
@@ -29,6 +30,7 @@ z=0;t=0;
              
                     }
                 }
+                
 
                 document.getElementById("test1").innerHTML+="le nombre de test total "+doc.getElementsByTagName("H3").length;
                 document.getElementById("test10").innerHTML+=this.y+"<br>";
@@ -36,7 +38,10 @@ z=0;t=0;
                 document.getElementById("test20").innerHTML+=this.x+"<br>";
                 document.getElementById("test3").innerHTML+="le nombre de test fail "+this.t+"<br>";
         });
+
+
   }
+  
   
 
 }

@@ -8,62 +8,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
 
-    <script>
-        "use restrict";
-        
-        var x,y;
-        var z=0,t=0;
-        console.log("bonjour");
-        fetch('/Users/yahiaaityaich/Desktop/stage-idemia/Test-Automation-Report.html')
-        .then(function(resp){
-            return resp.text();
-        })
-        .then(function(data){
-            let parser = new DOMParser(),
-                doc = parser.parseFromString(data, 'text/html');
-                for (let index = 0; index < doc.getElementsByClassName('test-status').length; index++) {
-                    if(doc.getElementsByClassName('test-status')[index].textContent==="pass"){
-                         y+=doc.getElementsByClassName('test-name')[index].textContent+"<br>";
-                         z++;
-                    }else{
-                        x+=doc.getElementsByClassName('test-name')[index].textContent +"<br>";
-                        t++;
-                    }
-                }
-       
-        
-                document.getElementById("test1").innerHTML+="le nombre de test total "+doc.getElementsByClassName('test-status').length+"<br>"; 
-                document.getElementById("test2").innerHTML+="le nombre de test positif "+z+"<br>";
-                document.getElementById("test10").innerHTML+=y+"<br>";
-                document.getElementById("test3").innerHTML+="le nombre de test fail "+t+"<br>";
-                document.getElementById("test20").innerHTML+=x+"<br>";
-        });
-        </script>
 
 </head>
 
-<div class="animated fadeIn">
-  <div class="card">
-    
+
     <body>
-      <h1 id="test1">
+     
+      <h1 class="list-group-item" id="test1">
       </h1>
       <hr>
-      <h2 id="test2">
+      <h2 class="list-group-item" id="test2">
       </h2>
-      <div id="test10"></div>
-      <hr>
-      <h2 id="test3">
+      <!-- <li class="list-group-item" id="test10"></li>
+      <hr> -->
+      <h2 class="list-group-item" id="test3">
       </h2>
-      <div id="test20" ></div>
+      <!-- <li class="list-group-item"  id="test20"></li> -->
       
-  
-  
+
+  <br> <br>
+
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button  (click)="onClickMe()" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                tests pass
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body"  id="myDiv">
+                
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button (click)="onClickMe1()" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                tests fail
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body" id="myDiv1">
+                
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+      <canvas id="myChart" width="400" height="400"></canvas>
+
+
       
   </body>
-    
-  </div>
-</div>
 
 </html>
 
